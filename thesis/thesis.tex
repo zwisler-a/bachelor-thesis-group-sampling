@@ -1,0 +1,145 @@
+\documentclass[english,bachelor]{swsLeipzig}
+%\documentclass[english,master]{swsLeipzig}
+% When you change the language, pdflatex may halt on recompilation.
+% Just hit enter to continue and recompile again. This should fix it.
+
+\newcommand{\note}[1]{\textcolor{teal}{#1}}
+
+%
+% Values
+% ------
+\ThesisSetTitle{Group Sampling zum Lernen konfigurationsabhängiger Softwareperformance}
+\ThesisSetTitleSub{Group Sampling for learning configuration-specific software performance}
+\ThesisSetKeywords{} % only for PDF meta attributes
+
+\ThesisSetAuthor{Alexander Zwisler}
+\ThesisSetStudentNumber{XXX}
+\ThesisSetDateOfBirth{1}{1}{1}
+\ThesisSetPlaceOfBirth{XXX}
+
+\ThesisSetSupervisors{XXX,XXX}
+
+\ThesisSetSubmissionDate{11}{2}{2022}
+\usepackage{xr} 
+\usepackage{nameref}
+\usepackage{blindtext}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{placeins}
+%
+% Suggested Packages 
+% ------------------
+\usepackage[square, numbers]{natbib}
+%   Allows citing in different ways (e.g., only the authors if you use the
+%   citation again within a short time).
+%
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+%    For tables ``looking the right way''.
+%
+%\usepackage{tabularx}
+%    Enables tables with columns that automatically fill the page width.
+%
+%\usepackage[ruled,algochapter]{algorithm2e}
+%    A package for pseudo code algorithms.
+%
+%\usepackage{amsmath}
+%    For tabular-style formatting of mathematical environments.
+%
+%
+% Commenting (by your supervisor)
+% ------------------------------- 
+\usepackage{xcolor}
+\usepackage{soul}
+\newcommand{\bscom}[2]{%
+% #1 Original text. 
+% #2 Replacement text.
+\st{\scriptsize\,#1}{\color{blue}\scriptsize\,#2}%
+}
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1} \nameref*{#1}}} % One single link
+
+% Create links in the pdf document
+% Hyperref has some incompatibilities with other packages
+% Some other packages must be loaded before, some after hyperref
+% Additional options to the hyperref package can be provided in the braces []
+\usehyperref[hidelinks,backref] % This will add back references in the bibliography
+\providecommand{\main}{.} 
+\usepackage{graphicx}
+\graphicspath{{./resources/} } 
+\usepackage{todonotes}
+\setlength{\marginparwidth}{3cm}
+\usepackage{subfiles}
+\setcitestyle{square}
+
+
+\pagestyle{plain}
+\begin{document}
+\begin{frontmatter}
+  \begin{abstract}
+    Modern software systems can often offer many configuration options to adapt the system to
+    the needs of the end-user. The influence of configuration options on non-functional
+    properties such as performance or energy consumption are often poorly understood.
+    Performance influence models help in understanding the influences of configuration
+    options on non-functional properties and make it possible to pick optimal configurations
+    or find performance hot spots.
+
+    This work introduces an approach to create a performance influence model using an experimental design called "group sampling".
+    We apply the group sampling technique to an input space with constraints, which poses a challenge we tackle in this thesis.
+    With repeated measurements of the effect different configurations have, we determine the influence
+    single configuration options and interactions between them have on a non-functional property.
+    We evaluate our performance influence model on real-world datasets and synthetically generated data.
+    While the model created proved to be unreliable, the group sampling approach 
+    was able to identify influential features with a minimal amount of samples.
+     
+
+    \vspace*{\fill}
+    \paragraph{}
+    Data and code is available at: 
+    \begin{itemize}
+      \setlength{\itemsep}{1pt}
+      \setlength{\parskip}{0pt}
+      \setlength{\parsep}{0pt}
+      \item \footnotesize\url{https://git.informatik.uni-leipzig.de/az11kyho/ba-group-sampling}
+      \item \footnotesize\url{https://github.com/zwisler-a/bachelor-thesis-group-sampling}
+    \end{itemize}    
+  \end{abstract}
+
+  \tableofcontents
+
+  
+  %\chapter*{Acknowledgements} % optional
+  %I thank the authors of the swsLeipzig template for their excellent work!
+
+  \listoffigures % optional
+
+  % \listoftables % optional
+
+  %\listofalgorithms % optional
+  %    requires package algorithm2e
+
+  % optional: list of symbols/notation (e.g., using the nomencl package)
+\end{frontmatter}
+
+\subfile{chapters/01_introduction.tex}
+
+\subfile{chapters/02_basics.tex}
+
+\subfile{chapters/03_group_sampling.tex}
+
+\subfile{chapters/05_evaluation}
+
+\subfile{chapters/06_discussion.tex}
+
+\subfile{chapters/07_concusion.tex}
+
+
+% Bibliography
+\bibliographystyle{IEEEtranN}
+\bibliography{literature}    % load file literature.bib
+
+
+
+% \subfile{chapters/appendix.tex}
+
+\end{document}

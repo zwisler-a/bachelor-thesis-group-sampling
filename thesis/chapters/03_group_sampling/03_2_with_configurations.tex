@@ -1,0 +1,59 @@
+\documentclass[../../thesis.tex]{subfiles}
+\graphicspath{{./resources/} }
+\begin{document}
+
+
+\section{Group sampling with configuration options}
+
+In order to implement group sampling on configuration options, the method described by \Citeauthor{saltelli2008global}
+needs to be adapted. For simplicity, we only look at feature models with binary features.
+When grouping features, each group of features needs to be a valid configuration if all features
+in a group are enabled. Otherwise, measuring the influence of the group on its own is not possible.
+This forces us to adhere to the constraints on the feature model while creating groups.
+We can identify three different types of features, which affect the way we can assign features to groups.
+
+\subsubsection{Mutually exclusive features}
+In this work, we call a group of features, where we can not enable more than one at the same time,
+a group of mutually exclusive features and consequently a feature contained in one of those groups,
+a mutually exclusive feature.
+For example, an alternative group is always a group of mutually exclusive features,
+since only one feature can be enabled without violating the constraints.
+Mutually exclusive features are problematic when we group features.
+We can't have two features assigned to the same group if they are together in a mutually exclusive group.
+This would cause an invalid configuration once the features of the group are enabled.
+
+\subsubsection{Independent features} 
+We call features, which do not have any constraints on them and are optional, independent features.
+If a set of features already are a valid configuration, these features can be added or removed
+completely independent of the already selected features. The resulting set of features would
+still be a valid configuration. These features allow for the easy creation of groups among them
+since they can be combined in any way possible without violating any constraints.
+
+\subsubsection{Implying feature}
+Implying features, or as \Citeauthor{benavides2010automated} categorizes them, requires features \cite{benavides2010automated},
+are features with a constraint, which forces us to select the implied feature
+if the implying feature is enabled. If an implying feature is assigned to a group, we need to
+assign the implied feature to the same group, otherwise, we would get an invalid configuration
+if the group with the implying feature is selected and the one with the implied feature is not.
+
+\subsubsection{}
+
+In \citet{saltelli2008global} group sampling, each group is a distinct set of parameters.
+This limits the number of groups possible on a set of features with constraints.
+While mandatory features would make it impossible to create any groups, we simply could ignore them, since they do not impact the
+performance of a given system. The most limiting factor would be a mandatory group of mutually exclusive features.
+The number of possible groups with a distinct set of features would equal the smallest mandatory group of mutually exclusive features.
+If a feature model contains multiple sets of mutually exclusive groups of different sizes, it is impossible
+to assign all mutually exclusive features to a group while still having a distinct set of features for each group.
+
+To create a performance influence model we need to measure the influence of each group individually.
+By doing so, we can estimate the influence of each group of features. With repeated testing of different groupings,
+we can estimate the influence of each feature by averaging the influence of the feature across all groupings.
+While this does not give us a perfect estimate of the influence of each feature, it lets us test, which
+of the features is most likely influential and to what degree.
+
+
+
+\end{document}
+
+

@@ -1,0 +1,25 @@
+c 1 root 
+c 2 Parameter_1 
+c 3 Parameter_2 
+c 4 Parameter_3 
+c 5 Parameter_4 
+c 6 Parameter_5 
+c 7 Parameter_6 
+c 8 Parameter_7 
+c 9 Parameter_8 
+c 10 Parameter_9 
+8 -9 0
+-9 -10 0
+8 -10 0
+-8 9 10 0
+7 -5 -2 -3 0
+1 -1 0
+1 -2 0
+1 -3 0
+1 -4 0
+1 -5 0
+1 -6 0
+1 -7 0
+1 0
+1 -8 0
+8 0

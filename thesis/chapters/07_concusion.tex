@@ -1,0 +1,43 @@
+\documentclass[../thesis.tex]{subfiles}
+\graphicspath{{\subfix{../resources/}}}
+\begin{document}
+
+\chapter{Conclusion and future work}
+\section{Conclusions}
+In this work, we looked at how one can create a performance influence model using
+a group sampling approach. To do this, we devised two strategies to create groups
+among configuration options and their constraints with the help of an SAT-solver. 
+We identified mutually exclusive features as the most limiting factor during group
+creation and allowed for mutually exclusive features to be in multiple groups to
+circumvent the issue. With the groups, we determined the influence of single
+features using the approach described by \Citeauthor{saltelli2008global} and
+created a performance influence model. This model was then evaluated on
+multiple datasets against a random sampling approach with linear regression.
+We also looked at how one could include feature interactions in the resulting 
+performance influence model.
+
+In our tests, we found that the group sampling approach while being able to identify
+influential features, did not result in a reliable model. We argue that this is due
+to the fact that the approach chosen to create the feature model is not able to accurately 
+determine the influence of non-influential features. 
+Leading to worse performance of the model on feature models with more features.
+With the inclusion of feature interactions, we were able to identify some interactions,
+if they appeared in the samples, but the model also proved to be unreliable due to the approach chosen.
+Since our approach treats interactions and features similar when determining the influences,
+the model also suffered from high average errors on non-influential features and interactions.
+
+Even though group sampling was not able to make accurate predictions about a software system,
+it was able to identify influential features with only a few measurements. 
+
+
+\section{Future work}
+
+Group sampling proves to be able to identify influential features with just a few measurements.
+With a round-based approach, this identification might even be possible with fewer measurements.
+By evaluating the influences after each round of groupings, one could create the following
+groups in a way to more easily identify an influential feature. 
+Another interesting approach to perform sensitivity analysis on a feature model would be 
+to apply the elementary effects method on groups of features maybe allowing for an efficient
+identification of influential features and interactions between features.
+
+\end{document}

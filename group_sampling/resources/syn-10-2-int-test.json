@@ -1,0 +1,32 @@
+{
+  "weights": [
+    2,
+    -2,
+    4,
+    -3,
+    5,
+    -3,
+    103,
+    -1,
+    4,
+    4
+  ],
+  "index_map": {
+    "root": 1,
+    "Parameter_1": 2,
+    "Parameter_2": 3,
+    "Parameter_3": 4,
+    "Parameter_4": 5,
+    "Parameter_5": 6,
+    "Parameter_6": 7,
+    "Parameter_7": 8,
+    "Parameter_8": 9,
+    "Parameter_9": 10
+  },
+  "interactions": [
+    [
+      8,
+      6
+    ]
+  ]
+}

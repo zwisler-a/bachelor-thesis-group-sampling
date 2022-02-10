@@ -1,0 +1,62 @@
+\documentclass[../../thesis.tex]{subfiles}
+\graphicspath{{./resources/} }
+\begin{document}
+
+
+
+\section{Performance-Influence Models}
+
+The number of possible configurations of modern software systems and the complex constraints between them can be overwhelming.
+Making it difficult to find an optimal configuration, that performs as desired. Performance influence models
+are meant to ease understanding, debugging and optimization of configurable software systems \cite{siegmund2015performance}.
+
+A performance influence model consists of several terms that describe the performance of a configuration
+based on the values of configuration options \cite{siegmund2015performance}. In this context, performance 
+can be measurable quality attributes such as execution time, memory size, or energy consumption.
+The model describes the influence of several independent variables X, our configuration, on
+a dependent variable y, our measurable quality attribute.
+While there are several approaches to predict performance, in general, they all work similarly.
+They sample a subset of configurations - this is done because it is infeasible to measure the performance
+of all configurations if the configuration space is too big -
+and learn a model with the sampled configurations.
+
+\citet{guo2013variability} introduce a variability-aware approach to predict a configuration's performance based on random sampling.
+They use a Classification-And-Regression-Tree \cite{loh2011classification} to recursively partition the configuration space into
+smaller segments until they can fit a simple local prediction model into each segment.
+
+\Citet{siegmund2015performance} describe how to create human understandable models based on previous work \cite{siegmund2012predicting}.
+They combined binary sampling strategies such as option-wise, negative option-wise, and pair-wise, with numerical sampling strategies, such as the
+Placket-Burman-Design. They then used stepwise linear regression to learn the influence model.
+
+
+
+\subsection{Sampling}\label{sec:basics:sampling}
+The selection of a subset of configurations plays an integral role in almost all methods to
+predict the performance of a software system. If a configuration option is not present in the
+sampled subset of configuration a model can not learn the influence of this option.
+The random selection, random sampling, as used by most
+machine learning applications proves to be difficult with configurations. Mainly due to the constraints
+on the configuration options. Near uniform random sampling in the presence of constraints, although
+possible, is infeasible \cite{supratik2014distribution}.
+This resulted in developing dedicated sampling strategies for configuration spaces.
+
+
+\subsubsection{Distance based sampling}
+\citet{kaltenecker2019distance} describes a way to randomly sample a configuration space based on a distance metric
+and a probability distribution, called distance-based sampling. For this, they rely on a distance metric, like the
+Manhattan-Distance, to assign each configuration a distance value. By selecting a distance value through a
+discrete probability distribution and then picking a configuration with the corresponding distance value, they
+achieve a spread over the configurations resembling the given probability distribution. This allows for
+uniform random like sampling if the chosen probability distribution is the uniform distribution.
+
+\subsubsection{Binary decision diagram-sampling}
+Although \Citet{oh2017finding} do not create a model to predict the performance of a system, they
+implement a way of random sampling configuration spaces through binary decision diagrams (BDD)\cite{akers1978binarydecisiondiagram}.
+They transform a given feature model into BDD, this makes it easy to count the number of valid configurations
+and thus easy to randomly sample from them. While a BDD allows for random sampling, a major drawback is
+the creation of it, which may exceed time or memory constraints for some use cases.
+
+
+
+
+\end{document}

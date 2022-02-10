@@ -1,0 +1,32 @@
+\documentclass[../../thesis.tex]{subfiles}
+\graphicspath{{./resources/} }
+\begin{document}
+
+\section{Sensitivity analysis}
+\citeauthor{saltelli2004global} describes sensitivity analysis as 
+"[...] the study of how the uncertainty in the output of a model
+(numerical or otherwise) can be apportioned to different sources of uncertainty in the model input" \cite{saltelli2004global}.
+To understand this definition, we need to understand, what a model is. A model, in this context, is a mathematical
+description of a system and its rules. Such models could be weather models to predict future rainfall or financial models
+to predict the stock market. By defining the input of the model, we can get a prediction from the model.
+In this work, we view a configurable software system as a black-box model on which we can
+perform sensitivity analysis. Our input variables are the features the systems have, and our output variable is the
+measurable quality attribute.
+Such models, no matter what they predict or are, can be highly complex, and it can be hard to understand the relationship
+between the inputs and the outputs of the models.
+% Sensitivity analysis helps in understanding the relation between the output and the input variables of a model, in searching for errors in a model and creating better models.
+The degree to which an output variable is affected by the change in an input variable is called sensitivity.
+There are many approaches to performing sensitivity analysis.
+One common and simple approach to sensitivity analysis is the one-at-a-time (OAT) approach.
+In this experimental design, one input variable is changed, while all other values are kept at a baseline value.
+By observing the changes in the output variable, one can determine the influence an input variable has.
+Sensitivity can then be described, for example, by linear regression or partial derivatives.
+
+Performing sensitivity analysis on a configurable software with the OAT-design would mean,
+enabling one feature at a time while all other features are disabled and observing the change in the quality attribute under analysis.
+We assume here, that the software system has no constraints among the configuration options.
+By fitting a regression model we can determine the sensitivity of the quality attribute to the features enabled.
+
+
+
+\end{document}
